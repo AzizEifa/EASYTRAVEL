@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.VBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.validation.RequiredFieldValidator?>
+<?import com.jfoenix.validation.NumberValidator?>
+<?import com.jfoenix.validation.EmailValidator?>
+
+<VBox xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1"
+      xmlns:jfoenix="http://jfoenix.com"
+      fx:controller="Controllers.UserController"
+      spacing="15"
+      style="-fx-padding: 20;">
+
+    <Label text="Gestion des Utilisateurs"
+           style="-fx-font-size: 20px; -fx-font-weight: bold;">
+        <VBox.margin>
+            <Insets top="0" right="0" bottom="10" left="0"/>
+        </VBox.margin>
+    </Label>
+
+    <GridPane hgap="10" vgap="10">
+        <columnConstraints>
+            <ColumnConstraints prefWidth="120"/>
+            <ColumnConstraints prefWidth="300"/>
+        </columnConstraints>
+
+        <Label text="ID:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+        <TextField fx:id="tfId" editable="false" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+        <Label text="Nom*:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+        <jfoenix:JFXTextField fx:id="tfNom" GridPane.rowIndex="1" GridPane.columnIndex="1">
+            <validators>
+                <RequiredFieldValidator message="Nom est obligatoire"/>
+            </validators>
+        </jfoenix:JFXTextField>
+
+
+        <Label text="Prénom*:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+        <jfoenix:JFXTextField fx:id="tfPrenom" GridPane.rowIndex="2" GridPane.columnIndex="1">
+            <validators>
+                <RequiredFieldValidator message="Prénom est obligatoire"/>
+            </validators>
+        </jfoenix:JFXTextField>
+
+        <Label text="Âge*:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+        <jfoenix:JFXTextField fx:id="tfAge" GridPane.rowIndex="3" GridPane.columnIndex="1">
+            <validators>
+                <RequiredFieldValidator message="Âge est obligatoire"/>
+                <NumberValidator message="Âge doit être un nombre"/>
+            </validators>
+        </jfoenix:JFXTextField>
+
+        <Label text="Email*:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+        <jfoenix:JFXTextField fx:id="tfEmail" GridPane.rowIndex="4" GridPane.columnIndex="1">
+            <validators>
+                <RequiredFieldValidator message="Email est obligatoire"/>
+                <EmailValidator message="Email invalide"/>
+            </validators>
+        </jfoenix:JFXTextField>
+
+        <Label text="Téléphone:" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+        <jfoenix:JFXTextField fx:id="tfPhone" GridPane.rowIndex="5" GridPane.columnIndex="1">
+            <validators>
+                <NumberValidator message="Doit contenir seulement des chiffres"/>
+            </validators>
+        </jfoenix:JFXTextField>
+
+        <Label text="Adresse:" GridPane.rowIndex="6" GridPane.columnIndex="0"/>
+        <TextField fx:id="tfAddress" GridPane.rowIndex="6" GridPane.columnIndex="1"/>
+
+        <Label text="Rôle*:" GridPane.rowIndex="7" GridPane.columnIndex="0"/>
+        <jfoenix:JFXComboBox fx:id="cbRole" GridPane.rowIndex="7" GridPane.columnIndex="1">
+            <validators>
+                <RequiredFieldValidator message="Rôle est obligatoire"/>
+            </validators>
+        </jfoenix:JFXComboBox>
+
+        <Label text="Mot de passe*:" GridPane.rowIndex="8" GridPane.columnIndex="0"/>
+        <jfoenix:JFXPasswordField fx:id="pfPassword" GridPane.rowIndex="8" GridPane.columnIndex="1">
+            <validators>
+                <RequiredFieldValidator message="Mot de passe est obligatoire"/>
+            </validators>
+        </jfoenix:JFXPasswordField>
+
+        <Label text="Genre:" GridPane.rowIndex="9" GridPane.columnIndex="0"/>
+        <jfoenix:JFXComboBox fx:id="cbGender" GridPane.rowIndex="9" GridPane.columnIndex="1"/>
+    </GridPane>
+
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <Button text="Ajouter" onAction="#handleAdd"
+                style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-min-width: 80;"/>
+        <Button text="Modifier" onAction="#handleUpdate"
+                style="-fx-background-color: #2196F3; -fx-text-fill: white; -fx-min-width: 80;"/>
+        <Button text="Supprimer" onAction="#handleDelete"
+                style="-fx-background-color: #F44336; -fx-text-fill: white; -fx-min-width: 80;"/>
+    </HBox>
+
+    <TableView fx:id="tableView" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="colId" text="ID" prefWidth="50"/>
+            <TableColumn fx:id="colNom" text="Nom" prefWidth="100"/>
+            <TableColumn fx:id="colPrenom" text="Prénom" prefWidth="100"/>
+            <TableColumn fx:id="colAge" text="Âge" prefWidth="50"/>
+            <TableColumn fx:id="colEmail" text="Email" prefWidth="150"/>
+            <TableColumn fx:id="colPhone" text="Téléphone" prefWidth="100"/>
+            <TableColumn fx:id="colAddress" text="Adresse" prefWidth="150"/>
+            <TableColumn fx:id="colRole" text="Rôle" prefWidth="80"/>
+            <TableColumn fx:id="colGender" text="Genre" prefWidth="80"/>
+        </columns>
+    </TableView>
+</VBox>
