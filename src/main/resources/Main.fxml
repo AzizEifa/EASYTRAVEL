@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/8"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="Controllers.MainController"
+      spacing="10">
+
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+    </padding>
+
+    <Label text="EASYTRAVEL" />
+
+    <Button text="Go to Livraison" onAction="#showLivraisons"/>
+    <Button text="Go to Trajet" onAction="#showTrajets"/>
+    <Button text="Go To Users" onAction="#showUsers"/>
+    <Button text="Go To FeedBacks" onAction="#showFeedbacks"/>
+
+
+    <StackPane fx:id="contentPane" prefHeight="400" prefWidth="600" style="-fx-border-color: #ccc; -fx-border-width: 2;"/>
+
+</VBox>
